@@ -1,12 +1,14 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class TestCubeController : MonoBehaviour
 {
     public EventHandler<bool> OnButtonAPressed;
     public EventHandler<bool> OnButtonEPressed;
-    
+    public Animator MonAnimator;
     
     //N'oublier pas que pour interagir avec un element il vous faut une référence. 
     //Il serait pertinent de r'ajouté un champ public pour povoir référencer dans l'inspecteur apres
@@ -21,17 +23,16 @@ public class TestCubeController : MonoBehaviour
         
         Debug.Log("Press A "+value.isPressed);
         OnButtonAPressed?.Invoke(this, value.isPressed);
-        
         //-----------------------------------------------
         
         // isPressed est vrai quand le boutton est pressé et faux lorsqu'il est relâché
         bool isPressed = value.isPressed;
-        
-        
-        
-        
-        
-        
+
+        MonAnimator.SetBool("Condition1", isPressed);
+
+
+
+
     }
     
     
@@ -44,7 +45,7 @@ public class TestCubeController : MonoBehaviour
         // isPressed est vrai quand le bouton est pressé et faux lorsqu'il est relâché
         bool isPressed = value.isPressed;
         
-        
+        MonAnimator.SetBool("Condition2", isPressed);
         
         
     }
